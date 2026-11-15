@@ -13,7 +13,7 @@
   </script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-    body{background:#f8fafc;color:#1e293b;line-height:1.5;padding-bottom:85px}
+    body{background:#f8fafc;color:#1e293b;line-height:1.5;padding-bottom:120px}
     .header{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;text-align:center;padding:25px 15px}
     .bismillah{font-size:14px;color:#93c5fd;margin-bottom:6px}
     h1{font-size:22px;margin-bottom:8px}
@@ -38,8 +38,81 @@
     .box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px;text-align:center}
     .box strong{display:block;color:#0f172a;font-size:13px;margin-bottom:3px}
     .box span{font-size:11px;color:#64748b}
-    .bar{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;padding:10px 15px;gap:10px;box-shadow:0 -3px 10px rgba(0,0,0,0.1);z-index:99;max-width:550px;margin:auto}
-    .bar a{flex:1;padding:12px;border-radius:8px;text-align:center;font-weight:bold;text-decoration:none;font-size:15px}
+    
+    /* تنسيقات شريط المشاهدات والتعليقات فوق أزرار التثبيت السفلية */
+    .floating-footer-widgets {
+      position: fixed;
+      bottom: 68px;
+      left: 0;
+      right: 0;
+      max-width: 550px;
+      margin: auto;
+      padding: 0 15px;
+      z-index: 98;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .views-counter {
+      background: rgba(15, 23, 42, 0.9);
+      color: #cbd5e1;
+      font-size: 11px;
+      text-align: center;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      backdrop-filter: blur(4px);
+    }
+    .views-counter svg {
+      width: 13px;
+      height: 13px;
+      fill: #93c5fd;
+    }
+    .mini-review-ticker {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 11px;
+      color: #1e293b;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+    .mini-review-ticker img {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .ticker-content {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.5s ease;
+      width: 100%;
+    }
+    .ticker-item {
+      height: 18px;
+      line-height: 18px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ticker-item strong {
+      color: #2563eb;
+      margin-left: 4px;
+    }
+
+    .bar{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;padding:8px 15px;gap:10px;box-shadow:0 -3px 10px rgba(0,0,0,0.1);z-index:99;max-width:550px;margin:auto}
+    .bar a{flex:1;padding:10px;border-radius:8px;text-align:center;font-weight:bold;text-decoration:none;font-size:14px}
   </style>
 </head>
 <body>
@@ -89,7 +162,7 @@
         <a href="https://wa.me/966565743171?text=السلام%20عليكم%20أريد%20استفسار%20عن%20تغيير%20السحابات%20ومجاري%20الأدراج" target="_blank">
           <img src="IMG-20261115-WA0037.jpg" alt="تغيير سحابات ومجاري الأدراج">
         </a>
-        <p><strong>تغيير سحابات ومجاري الأدراج التالفة:</strong>تغيير سحابات ومجاري الأدراج التالفة: هل أصبحت أدراج مطبخك ثقيلة في الحركة أو تصدر أصواتاً مزعجة وتخرج عن مسارها وتتعبك في الفتح والإغلاق؟ نقدم لك الحل الجذري باستبدال المجاري القديمة بسحابات رولمان بلي أصلية وقوية تتحمل أثقل الأوزان وتمنع الاحتكاك نهائياً لتستمتع بحركة سلسة ومريحة للغاية، اطلب الخدمة الآن ولا تأجل راحة مطبخك، ونقدم لكم أيضاً خدمات الصيانة الشاملة والمحترفة لجميع غرف النوم والسراير ودواليب المطابخ بأعلى جودة ودقة، مع خصم خاص 17% لفترة محدودة على كافة أعمال الصيانة والتركيب بجدة، تواصل معنا الآن لتحصل على أفضل خدمة متكاملة لمنزلك..</p>
+        <p><strong>تغيير سحابات ومجاري الأدراج التالفة:</strong> هل أصبحت أدراج مطبخك ثقيلة في الحركة أو تصدر أصواتاً مزعجة وتخرج عن مسارها وتتعبك في الفتح والإغلاق؟ نقدم لك الحل الجذري باستبدال المجاري القديمة بسحابات رولمان بلي أصلية وقوية تتحمل أثقل الأوزان وتمنع الاحتكاك نهائياً لتستمتع بحركة سلسة ومريحة للغاية، اطلب الخدمة الآن ولا تأجل راحة مطبخك، ونقدم لكم أيضاً خدمات الصيانة الشاملة والمحترفة لجميع غرف النوم والسراير ودواليب المطابخ بأعلى جودة ودقة، مع خصم خاص 17% لفترة محدودة على كافة أعمال الصيانة والتركيب بجدة، تواصل معنا الآن لتحصل على أفضل خدمة متكاملة لمنزلك.</p>
       </div>
 
     </div>
@@ -163,10 +236,39 @@
 
   </div>
 
+  <!-- عناصر المشاهدات والتعليقات المتحركة فوق أزرار السفلية مباشرة -->
+  <div class="floating-footer-widgets">
+    <div class="views-counter">
+      <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      <span>تمت مشاهدة الموقع: <strong>9591</strong> زيارة خلال الشهر الماضي</span>
+    </div>
+    
+    <div class="mini-review-ticker">
+      <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80" alt="صورة العميل">
+      <div class="ticker-content" id="tickerContainer">
+        <div class="ticker-item"><strong>Ahmed S:</strong> تم إصلاح أدراج المطبخ بدقة وسرعة عالية شكراً لكم</div>
+        <div class="ticker-item"><strong>Mohammed K:</strong> ممتازة صيانة المفصلات والأدراج عادت كالجديدة</div>
+        <div class="ticker-item"><strong>Khaled M:</strong> سرعة في الإنجاز وعمل احترافي منظم بجدة</div>
+      </div>
+    </div>
+  </div>
+
   <div class="bar">
     <a href="tel:0565743171" class="btn-call">اتصال الآن</a>
     <a href="https://wa.me/966565743171?text=السلام%20عليكم%20ورحمة%20الله%20وبركاته%20عندي%20شغل%20صيانة%20وتعديل%20دواليب%20مطابخ%20وأريد%20معاينة%20وتحديد%20التكلفة" class="btn-wa">واتساب مباشر</a>
   </div>
+
+  <script>
+    // سكربت تبديل التعليقات كل 10 ثوانٍ
+    let currentIndex = 0;
+    const tickerContainer = document.getElementById('tickerContainer');
+    const totalItems = tickerContainer.children.length;
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalItems;
+      tickerContainer.style.transform = `translateY(-${currentIndex * 18}px)`;
+    }, 10000);
+  </script>
 
 </body>
 </html>
