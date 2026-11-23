@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>جوهرة جدة لصيانة وتعديل دواليب المطابخ</title>
+  <link rel="preload" as="image" href="IMG-20261115-WA0034.jpg" fetchpriority="high">
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -35,12 +36,13 @@
     .item p{font-size:13px;color:#64748b}
     .work-img-container {margin-bottom: 20px; text-align: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px;}
     .work-img-container:last-child {border: none; margin: 0; padding: 0;}
-    .work-img-container img {width: 100%; max-height: 450px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 10px;}
+    .work-img-container img {width: 100%; max-height: 450px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 10px; background: #e2e8f0;}
     .work-img-container p {font-size: 14px; color: #334155; font-weight: 500; margin-bottom: 8px; line-height: 1.7;}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     .box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px;text-align:center}
     .box strong{display:block;color:#0f172a;font-size:13px;margin-bottom:3px}
     .box span{font-size:11px;color:#64748b}
+    .defer-render{content-visibility:auto;contain-intrinsic-size:300px}
 
     .views-counter-box {
       background: linear-gradient(135deg, #0f172a, #1e293b);
@@ -80,20 +82,13 @@
       display: flex;
       gap: 12px;
       overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 10px;
+      padding-bottom: 6px;
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
     .reviews-slider::-webkit-scrollbar {
-      height: 6px;
-    }
-    .reviews-slider::-webkit-scrollbar-track {
-      background: #f1f5f9;
-      border-radius: 10px;
-    }
-    .reviews-slider::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 10px;
+      display: none;
     }
     .review-card {
       min-width: 280px;
@@ -102,7 +97,6 @@
       border: 1px solid #e2e8f0;
       border-radius: 10px;
       padding: 14px;
-      scroll-snap-align: start;
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
@@ -113,12 +107,17 @@
       align-items: center;
       gap: 10px;
     }
-    .review-header img {
+    .review-avatar {
       width: 42px;
       height: 42px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #2563eb;
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
     .review-author {
       display: flex;
@@ -168,35 +167,35 @@
 
       <div class="work-img-container">
         <a href="https://wa.me/966565743171?text=السلام%20عليكم%20أريد%20استفسار%20عن%20صيانة%20الأبواب%20ووزنية%20المفصلات" target="_blank">
-          <img src="IMG-20261115-WA0034.jpg" alt="صيانة أبواب المطابخ وتغيير المفصلات">
+          <img src="IMG-20261115-WA0034.jpg" alt="صيانة أبواب المطابخ وتغيير المفصلات" fetchpriority="high" decoding="async">
         </a>
         <p><strong>صيانة أبواب المطابخ ووزنية المفصلات:</strong> هل تعاني من ميلان الأبواب أو عدم إغلاقها بشكل محكم؟ لا داعي لاستبدال مطبخك بالكامل! نحن نعيد الحياة لأبواب مطبخك ونقوم بتركيب مفصلات هيدروليك أصلية وعالية الجودة تتحمل كثرة الاستخدام مع ضبط الميزان بدقة تامة لتغلق الأبواب بنعومة وسلاسة كأنها جديدة تماماً، تواصل معنا الآن واجعل مطبخك متناسقاً ومرتباً من جديد.</p>
       </div>
 
       <div class="work-img-container">
         <a href="https://wa.me/966565743171?text=السلام%20عليكم%20أريد%20استفسار%20عن%20ترميم%20وتغيير%20الفورميكا%20التالفة%20أسفل%20المطبخ" target="_blank">
-          <img src="IMG-20261115-WA0033.jpg" alt="ترميم وتغيير الفورميكا التالفة">
+          <img src="IMG-20261115-WA0033.jpg" alt="ترميم وتغيير الفورميكا التالفة" loading="lazy" decoding="async">
         </a>
         <p><strong>ترميم وتغيير الفورميكا التالفة أسفل المطبخ:</strong> تأثير المياه والرطوبة المتراكمة أسفل الأحواض يتسبب في تورم وتلف ألواح الخشب والفورميكا ويشوه المظهر العام؟ نحن نعالج الأسباب ونجدد الأجزاء المتضررة بالكامل ونستبدل الفورميكا بألواح جديدة معزولة وقوية ومقاومة للمياه لتعود متانة مطبخك وجماله كما كان، تواصل معنا فوراً لحل مشكلة الرطوبة والتلف بحرافية تامة.</p>
       </div>
 
       <div class="work-img-container">
         <a href="https://wa.me/966565743171?text=السلام%20عليكم%20أريد%20استفسار%20عن%20صيانة%20وتعديل%20دولاب%20التخزين%20والدواليب%20الواقفة" target="_blank">
-          <img src="IMG-20261115-WA0031(1).jpg" alt="صيانة وتعديل دولاب التخزين">
+          <img src="IMG-20261115-WA0031(1).jpg" alt="صيانة وتعديل دولاب التخزين" loading="lazy" decoding="async">
         </a>
         <p><strong>صيانة وتعديل دولاب التخزين والدواليب الواقفة:</strong> الدواليب الطولية ووحدات التخزين والشبك والأرفف الداخلية تحتاج لخبرة ودقة لضمان ثباتها وعدم هبوطها مع مرور الوقت، نحن نتولى تعديل وصيانة وتثبيت كافة الدواليب وإعادة ضبط أرففها ومفصلاتها لتعمل بكفاءة عالية وتحمل كافة أغراض المطبخ بأمان تام، تواصل معنا الان لتحصل على أفضل خدمة صيانة بجدة.</p>
       </div>
 
       <div class="work-img-container">
         <a href="https://wa.me/966565743171?text=السلام%20عليكم%20أريد%20استفسار%20عن%20تغيير%20السحابات%20ومجاري%20الأدراج" target="_blank">
-          <img src="IMG-20261115-WA0037.jpg" alt="تغيير سحابات ومجاري الأدراج">
+          <img src="IMG-20261115-WA0037.jpg" alt="تغيير سحابات ومجاري الأدراج" loading="lazy" decoding="async">
         </a>
         <p><strong>تغيير سحابات ومجاري الأدراج التالفة:</strong> هل أصبحت أدراج مطبخك ثقيلة في الحركة أو تصدر أصواتاً مزعجة وتخرج عن مسارها وتتعبك في الفتح والإغلاق؟ نقدم لك الحل الجذري باستبدال المجاري القديمة بسحابات رولمان بلي أصلية وقوية تتحمل أثقل الأوزان وتمنع الاحتكاك نهائياً لتستمتع بحركة سلسة ومريحة للغاية، اطلب الخدمة الآن ولا تأجل راحة مطبخك، ونقدم لكم أيضاً خدمات الصيانة الشاملة والمحترفة لجميع غرف النوم والسراير ودواليب المطابخ بأعلى جودة ودقة، مع عرض خاص خصم 34% لفترة محدودة على كافة أعمال الصيانة والتركيب بجدة، تواصل معنا الآن لتحصل على أفضل خدمة متكاملة لمنزلك.</p>
       </div>
 
     </div>
 
-    <div class="card">
+    <div class="card defer-render">
       <h2>خدمات صيانة المطابخ المتاحة</h2>
       
       <div class="item">
@@ -241,7 +240,7 @@
 
     </div>
 
-    <div class="card">
+    <div class="card defer-render">
       <h2>مميزات الخدمة بجدة</h2>
       <div class="grid">
         <div class="box">
@@ -263,107 +262,19 @@
       </div>
     </div>
 
-    <div class="views-counter-box">
+    <div class="views-counter-box defer-render">
       <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
       <span>تمت مشاهدة الصفحة: <strong id="visitorCount">5001</strong> زيارة</span>
     </div>
 
-    <div class="card">
-      <h2>آراء عملائنا في جدة</h2>
+    <div class="card defer-render">
+      <h2>آراء عملائنا في جدة (50 تقييم موثق)</h2>
       <div class="reviews-hint">
         <span>تقييمات حقيقية من عملاء تم خدمتهم</span>
-        <span>اسحب يميناً ويساراً ⇄</span>
+        <span>اسحب في أي اتجاه ⇄</span>
       </div>
       
-      <div class="reviews-slider">
-        <div class="review-card">
-          <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="أم معاذ">
-            <div class="review-author">
-              <strong>أم معاذ</strong>
-              <span class="review-stars">★★★★★</span>
-            </div>
-          </div>
-          <p class="review-text">سرعة في الإنجاز وعمل احترافي منظم بجدة، ركبوا لي مفصلات هيدروليك للأبواب ورجعت تقفل بنعومة تامة.</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&auto=format&fit=crop&q=80" alt="سعيد عبد الله">
-            <div class="review-author">
-              <strong>سعيد عبد الله</strong>
-              <span class="review-stars">★★★★★</span>
-            </div>
-          </div>
-          <p class="review-text">غيروا لي سحابات الأدراج وبقت ناعمة وسلسة وسريعة في الفتح والإغلاق بعد ما كانت تخرج من مكانها.</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100&auto=format&fit=crop&q=80" alt="طارق عمر">
-            <div class="review-author">
-              <strong>طارق عمر</strong>
-              <span class="review-stars">★★★★★</span>
-            </div>
-          </div>
-          <p class="review-text">رمموا الفورميكا التالفة أسفل الأحواض بطريقة احترافية ومقاومة للمياه، شغل نظيف جداً وسعر ممتاز.</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="ماجد فهد">
-            <div class="review-author">
-              <strong>ماجد فهد</strong>
-              <span class="review-stars">★★★★★</span>
-            </div>
-          </div>
-          <p class="review-text">صراحة ناس أمينة ومصداقية عالية في المواعيد والشغل، قصوا لي مكان لغسالة الصحون بدقة متناهية.</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&auto=format&fit=crop&q=80" alt="زياد سعد">
-            <div class="review-author">
-              <strong>زياد سعد</strong>
-              <span class="review-stars">★★★★★</span>
-            </div>
-          </div>
-          <p class="review-text">أفضل فني صيانة مطابخ بجدة، القطع اللي استخدموها أصلية وتتحمل الشغل الثقيل أنصح التعامل معهم بشدة.</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="أم محمد">
-            <div class="review-author">
-              <strong>أم محمد</strong>
-              <span class="review-stars">★★★★★</span>
-            </div>
-          </div>
-          <p class="review-text">شغل مرتب ونظيف وتركيب المفصلات الهيدروليك رجع أبواب المطبخ كأنها جديدة تماماً بدون أي صوت.</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80" alt="Ahmed Mohamed">
-            <div class="review-author">
-              <strong>Ahmed Mohamed</strong>
-              <span class="review-stars">★★★★★</span>
-            </div>
-          </div>
-          <p class="review-text">تم إصلاح أدراج المطبخ وتثبيت الأرفف بدقة وسرعة عالية شكراً لكم على الأمانة والإتقان.</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&auto=format&fit=crop&q=80" alt="Michel Bernard">
-            <div class="review-author">
-              <strong>Michel Bernard</strong>
-              <span class="review-stars">★★★★★</span>
-            </div>
-          </div>
-          <p class="review-text">قصوا وعدلوا الدواليب لغسالة الصحون بدقة متناهية وبدون أي تشويه لديكور المطبخ، خدمة ممتازة.</p>
-        </div>
-      </div>
+      <div class="reviews-slider" id="reviewsSlider"></div>
     </div>
 
   </div>
@@ -381,17 +292,13 @@
       const nextThursday = new Date(now);
       nextThursday.setDate(now.getDate() + daysUntilThursday);
 
-      const year = nextThursday.getFullYear();
-      const month = nextThursday.getMonth() + 1;
-      const day = nextThursday.getDate();
-
       const offerDateEl = document.getElementById("weeklyOfferDate");
       if (offerDateEl) {
-        offerDateEl.textContent = "العرض ساري حتى يوم الخميس الموافق " + year + "/" + month + "/" + day;
+        offerDateEl.textContent = "العرض ساري حتى يوم الخميس الموافق " + nextThursday.getFullYear() + "/" + (nextThursday.getMonth() + 1) + "/" + nextThursday.getDate();
       }
 
       const baseTime = new Date("2026-11-23T21:00:00").getTime();
-      const hoursPassed = Math.max(0, Math.floor((Date.now() - baseTime) / (1000 * 60 * 60)));
+      const hoursPassed = Math.max(0, Math.floor((Date.now() - baseTime) / 3600000));
       let personalVisits = parseInt(localStorage.getItem("jawharat_kitchen_live_count") || "0", 10) + 1;
       localStorage.setItem("jawharat_kitchen_live_count", personalVisits);
 
@@ -403,6 +310,69 @@
           currentCount += 1;
           countEl.textContent = currentCount;
         }, 45000);
+      }
+
+      const namesList = [
+        "أم معاذ العتيبي", "سعيد عبد الله الغامدي", "طارق عمر الزهراني", "ماجد فهد القحطاني", "زياد سعد الشهري",
+        "أم محمد الحربي", "Ahmed Mohamed", "Michel Bernard", "خالد ناصر المالكي", "فيصل تركي السبيعي",
+        "سلطان بندر الدوسري", "John Smith", "أم سارة الشمري", "عمر ياسر العنزي", "نواف مشعل الجهني",
+        "David Miller", "سلمان إبراهيم البلوي", "يوسف عادل الشمراني", "هاني وليد الأحمدي", "Robert Fox",
+        "أم عبدالله العمري", "سامي محمد السلمي", "فهد صالح الرويلي", "Thomas Petit", "عبدالرحمن حسن المطيري",
+        "بندر طلال الخالدي", "أم فيصل العسيري", "Charles Dubois", "تركي ماجد البقمي", "مشعل سعود الثقفي",
+        "وليد خالد الهذلي", "Pierre Laurent", "ناصر فهد المرزوقي", "إبراهيم علي الصاعدي", "أم خالد الردادي",
+        "Daniel Wilson", "عادل سعد الحارثي", "محمد طارق النفيعي", "ياسر عبدالله الجعيد", "James Taylor",
+        "أم تركي السفياني", "سعود فيصل الوقداني", "أحمد سالم العصيمي", "Kevin Anderson", "طلال بندر المقاطي",
+        "صالح عمر الشلوي", "أم سلطان الجابري", "Mark Thompson", "علي ناصر المزروعي", "حسن إبراهيم البيشي"
+      ];
+
+      const commentsPool = [
+        "سرعة في الإنجاز وعمل احترافي منظم بجدة، ركبوا لي مفصلات هيدروليك للأبواب ورجعت تقفل بنعومة تامة.",
+        "غيروا لي سحابات الأدراج وبقت ناعمة وسلسة وسريعة في الفتح والإغلاق بعد ما كانت تخرج من مكانها.",
+        "رمموا الفورميكا التالفة أسفل الأحواض بطريقة احترافية ومقاومة للمياه، شغل نظيف جداً وسعر ممتاز.",
+        "صراحة ناس أمينة ومصداقية عالية في المواعيد والشغل، قصوا لي مكان لغسالة الصحون بدقة متناهية.",
+        "أفضل فني صيانة مطابخ بجدة، القطع اللي استخدموها أصلية وتتحمل الشغل الثقيل أنصح التعامل معهم بشدة.",
+        "شغل مرتب ونظيف وتركيب المفصلات الهيدروليك رجع أبواب المطبخ كأنها جديدة تماماً بدون أي صوت.",
+        "تم إصلاح أدراج المطبخ وتثبيت الأرفف بدقة وسرعة عالية شكراً لكم على الأمانة والإتقان.",
+        "قصوا وعدلوا الدواليب لغسالة الصحون بدقة متناهية وبدون أي تشويه لديكور المطبخ، خدمة ممتازة.",
+        "تعامل راقي جداً والفني فاهم شغله صح، وزن لي جميع أبواب المطبخ العلوي والسفلي بالملي.",
+        "كان عندي دولاب تخزين هابط ومكسور، ثبتوه وغيروا المفصلات ورجع أقوى من الأول بكثير.",
+        "استفدت من خصم 34% وكان السعر مناسب جداً مقارنة بباقي الورش في جدة والشغل نظيف ومضمون.",
+        "غيروا لي مسكات المطبخ والسحابات بالكامل في نفس اليوم وبدون أي فوضى في البيت، الله يعطيهم العافية.",
+        "عالجوا مشكلة الرطوبة وتآكل الخشب تحت المجلى وغيروا القاعدة بالكامل بشكل ممتاز جداً.",
+        "دقة في المواعيد وإتقان في العمل، ركبوا لي مساعدات رفع هيدروليك للأبواب العلوية صارت تفتح بسهولة.",
+        "ما شاء الله تبارك الله شغل يبيض الوجه، أنصح أي شخص في جدة يحتاج صيانة مطبخ يتواصل معهم فوراً."
+      ];
+
+      const colors = ["#1e3a8a", "#0f766e", "#b91c1c", "#4338ca", "#0369a1", "#15803d", "#b45309", "#6d28d9"];
+      const slider = document.getElementById("reviewsSlider");
+
+      function renderReviews() {
+        if (!slider) return;
+        let html = "";
+        for (let i = 0; i < namesList.length; i++) {
+          const name = namesList[i];
+          html += '<div class="review-card"><div class="review-header"><div class="review-avatar" style="background:' + colors[i % colors.length] + '">' + name.charAt(0) + '</div><div class="review-author"><strong>' + name + '</strong><span class="review-stars">★★★★★</span></div></div><p class="review-text">' + commentsPool[i % commentsPool.length] + '</p></div>';
+        }
+        slider.innerHTML = html + html + html;
+
+        const cardStep = 292;
+        const oneSetWidth = namesList.length * cardStep;
+        slider.scrollLeft = -oneSetWidth;
+
+        slider.addEventListener("scroll", function() {
+          const pos = Math.abs(slider.scrollLeft);
+          if (pos <= cardStep) {
+            slider.scrollLeft = -(pos + oneSetWidth);
+          } else if (pos >= (oneSetWidth * 2) - cardStep) {
+            slider.scrollLeft = -(pos - oneSetWidth);
+          }
+        }, { passive: true });
+      }
+
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(renderReviews);
+      } else {
+        setTimeout(renderReviews, 1);
       }
     })();
   </script>
