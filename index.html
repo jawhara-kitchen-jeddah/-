@@ -13,14 +13,15 @@
   </script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-    body{background:#f8fafc;color:#1e293b;line-height:1.5;padding-bottom:130px}
+    body{background:#f8fafc;color:#1e293b;line-height:1.5;padding-bottom:80px}
     .header{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;text-align:center;padding:25px 15px}
     .bismillah{font-size:14px;color:#93c5fd;margin-bottom:6px}
     h1{font-size:22px;margin-bottom:8px}
     .header p{font-size:14px;color:#cbd5e1}
     .container{max-width:550px;margin:auto;padding:15px}
-    .offer-banner{background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;text-align:center;padding:12px 15px;border-radius:10px;margin-bottom:14px;font-weight:bold;font-size:15.5px;border:2px dashed #fde047;box-shadow:0 4px 10px rgba(220,38,38,0.25)}
+    .offer-banner{background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;text-align:center;padding:13px 15px;border-radius:10px;margin-bottom:14px;font-weight:bold;font-size:15px;border:2px dashed #fde047;box-shadow:0 4px 10px rgba(220,38,38,0.25);line-height:1.6}
     .offer-banner span{color:#fde047;font-size:18px;font-weight:900}
+    .offer-date{display:block;font-size:13.5px;color:#fef08a;margin-top:4px;font-weight:bold}
     .actions{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
     .btn{display:flex;align-items:center;justify-content:center;padding:13px;border-radius:10px;font-size:16px;font-weight:bold;text-decoration:none}
     .btn-call{background:#2563eb;color:#fff}
@@ -40,90 +41,106 @@
     .box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px;text-align:center}
     .box strong{display:block;color:#0f172a;font-size:13px;margin-bottom:3px}
     .box span{font-size:11px;color:#64748b}
-    
-    .floating-footer-widgets {
-      position: fixed;
-      bottom: 68px;
-      left: 0;
-      right: 0;
-      max-width: 550px;
-      margin: auto;
-      padding: 0 15px;
-      z-index: 98;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .views-counter {
-      background: rgba(15, 23, 42, 0.92);
-      color: #cbd5e1;
-      font-size: 12px;
+
+    .views-counter-box {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      font-size: 14px;
       text-align: center;
-      padding: 5px 10px;
-      border-radius: 6px;
+      padding: 12px 15px;
+      border-radius: 10px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      backdrop-filter: blur(4px);
-    }
-    .views-counter svg {
-      width: 14px;
-      height: 14px;
-      fill: #93c5fd;
-    }
-    .mini-review-ticker {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 6px;
-      padding: 8px 12px;
-      font-size: 13px;
-      color: #1e293b;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
       gap: 8px;
-      height: 36px;
-      overflow: hidden;
-      position: relative;
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.15);
     }
-    .mini-review-ticker img {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      object-fit: cover;
+    .views-counter-box svg {
+      width: 20px;
+      height: 20px;
+      fill: #38bdf8;
       flex-shrink: 0;
     }
-    .ticker-content {
+    .views-counter-box strong {
+      color: #fde047;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .reviews-hint {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .reviews-slider {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .reviews-slider::-webkit-scrollbar {
+      height: 6px;
+    }
+    .reviews-slider::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 10px;
+    }
+    .reviews-slider::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    .review-card {
+      min-width: 280px;
+      max-width: 280px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      transition: transform 0.5s ease;
-      width: 100%;
+      gap: 8px;
     }
-    .ticker-item {
-      height: 20px;
-      line-height: 20px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .review-header {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 10px;
     }
-    .ticker-item img {
-      width: 22px;
-      height: 22px;
+    .review-header img {
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       object-fit: cover;
-      flex-shrink: 0;
+      border: 2px solid #2563eb;
     }
-    .ticker-item strong {
-      color: #2563eb;
-      margin-left: 6px;
+    .review-author {
+      display: flex;
+      flex-direction: column;
+    }
+    .review-author strong {
+      font-size: 14px;
+      color: #0f172a;
+    }
+    .review-stars {
+      color: #f59e0b;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+    .review-text {
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.6;
     }
 
     .bar{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;padding:8px 15px;gap:10px;box-shadow:0 -3px 10px rgba(0,0,0,0.1);z-index:99;max-width:550px;margin:auto}
-    .bar a{flex:1;padding:10px;border-radius:8px;text-align:center;font-weight:bold;text-decoration:none;font-size:14px}
+    .bar a{flex:1;padding:11px;border-radius:8px;text-align:center;font-weight:bold;text-decoration:none;font-size:15px}
   </style>
 </head>
 <body>
@@ -137,7 +154,8 @@
   <div class="container">
 
     <div class="offer-banner">
-      عرض خاص لفترة محدودة <span>خصم 34%</span> على جميع أعمال صيانة وتعديل دواليب المطابخ بجدة
+      عرض خاص <span>خصم 34%</span> على جميع أعمال صيانة وتعديل دواليب المطابخ بجدة
+      <span class="offer-date" id="weeklyOfferDate">العرض ساري حتى يوم الخميس القادم</span>
     </div>
 
     <div class="actions">
@@ -148,7 +166,6 @@
     <div class="card">
       <h2>معرض أعمالنا (قبل وبعد الصيانة الاحترافية)</h2>
 
-      <!-- 1. تغيير المفصلات والأبواب -->
       <div class="work-img-container">
         <a href="https://wa.me/966565743171?text=السلام%20عليكم%20أريد%20استفسار%20عن%20صيانة%20الأبواب%20ووزنية%20المفصلات" target="_blank">
           <img src="IMG-20261115-WA0034.jpg" alt="صيانة أبواب المطابخ وتغيير المفصلات">
@@ -156,7 +173,6 @@
         <p><strong>صيانة أبواب المطابخ ووزنية المفصلات:</strong> هل تعاني من ميلان الأبواب أو عدم إغلاقها بشكل محكم؟ لا داعي لاستبدال مطبخك بالكامل! نحن نعيد الحياة لأبواب مطبخك ونقوم بتركيب مفصلات هيدروليك أصلية وعالية الجودة تتحمل كثرة الاستخدام مع ضبط الميزان بدقة تامة لتغلق الأبواب بنعومة وسلاسة كأنها جديدة تماماً، تواصل معنا الآن واجعل مطبخك متناسقاً ومرتباً من جديد.</p>
       </div>
 
-      <!-- 2. ترميم وتغيير الفورميكا -->
       <div class="work-img-container">
         <a href="https://wa.me/966565743171?text=السلام%20عليكم%20أريد%20استفسار%20عن%20ترميم%20وتغيير%20الفورميكا%20التالفة%20أسفل%20المطبخ" target="_blank">
           <img src="IMG-20261115-WA0033.jpg" alt="ترميم وتغيير الفورميكا التالفة">
@@ -164,7 +180,6 @@
         <p><strong>ترميم وتغيير الفورميكا التالفة أسفل المطبخ:</strong> تأثير المياه والرطوبة المتراكمة أسفل الأحواض يتسبب في تورم وتلف ألواح الخشب والفورميكا ويشوه المظهر العام؟ نحن نعالج الأسباب ونجدد الأجزاء المتضررة بالكامل ونستبدل الفورميكا بألواح جديدة معزولة وقوية ومقاومة للمياه لتعود متانة مطبخك وجماله كما كان، تواصل معنا فوراً لحل مشكلة الرطوبة والتلف بحرافية تامة.</p>
       </div>
 
-      <!-- 3. دولاب التخزين -->
       <div class="work-img-container">
         <a href="https://wa.me/966565743171?text=السلام%20عليكم%20أريد%20استفسار%20عن%20صيانة%20وتعديل%20دولاب%20التخزين%20والدواليب%20الواقفة" target="_blank">
           <img src="IMG-20261115-WA0031(1).jpg" alt="صيانة وتعديل دولاب التخزين">
@@ -172,7 +187,6 @@
         <p><strong>صيانة وتعديل دولاب التخزين والدواليب الواقفة:</strong> الدواليب الطولية ووحدات التخزين والشبك والأرفف الداخلية تحتاج لخبرة ودقة لضمان ثباتها وعدم هبوطها مع مرور الوقت، نحن نتولى تعديل وصيانة وتثبيت كافة الدواليب وإعادة ضبط أرففها ومفصلاتها لتعمل بكفاءة عالية وتحمل كافة أغراض المطبخ بأمان تام، تواصل معنا الان لتحصل على أفضل خدمة صيانة بجدة.</p>
       </div>
 
-      <!-- 4. تغيير السحابات والأدراج -->
       <div class="work-img-container">
         <a href="https://wa.me/966565743171?text=السلام%20عليكم%20أريد%20استفسار%20عن%20تغيير%20السحابات%20ومجاري%20الأدراج" target="_blank">
           <img src="IMG-20261115-WA0037.jpg" alt="تغيير سحابات ومجاري الأدراج">
@@ -249,34 +263,109 @@
       </div>
     </div>
 
-  </div>
-
-  <!-- عناصر المشاهدات والتعليقات الـ 15 المتنوعة باللغات المختلفة والصور المختلفة -->
-  <div class="floating-footer-widgets">
-    <div class="views-counter">
+    <div class="views-counter-box">
       <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-      <span>تمت مشاهدة الموقع: <strong id="visitorCount">9591</strong> زيارة خلال الشهر الماضي</span>
+      <span>تمت مشاهدة الصفحة: <strong id="visitorCount">5001</strong> زيارة</span>
     </div>
-    
-    <div class="mini-review-ticker">
-      <div class="ticker-content" id="tickerContainer">
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>Ahmed Mohamed:</strong> تم إصلاح أدراج المطبخ بدقة وسرعة عالية شكراً لكم</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>Jean Pierre:</strong> ممتازة صيانة المفصلات والأدراج عادت كالجديدة</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>أم معاذ:</strong> سرعة في الإنجاز وعمل احترافي منظم بجدة</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>John Smith:</strong> خدمة ممتازة في تركيب وتعديل المطابخ وشغل نظيف جداً</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>سعيد عبد الله:</strong> غيروا لي سحابات الأدراج وبقت ناعمة وسلسة وسريعة في الفتح والإغلاق</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>Pierre Laurent:</strong> تواصلت معاهم وغيروا مفصلات الأبواب بدقة والميزان طلع مظبوط مية مية</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>David Miller:</strong> عملوا تعديل وتغيير للون واجهة الأبواب والمظهر بقى كأن المطبخ جديد تماماً</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>طارق عمر:</strong> رمموا الفورميكا التالفة أسفل الأحواض بطريقة احترافية ومقاومة للمياه</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>Michel Bernard:</strong> قصوا وتعديلوا الدواليب لغسالة الصحون بدقة متناهية وبدون أي تشويه للديكور</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>ماجد فهد:</strong> صراحة ناس أمينة ومصداقية عالية في المواعيد والشغل</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>Robert Fox:</strong> القطع وغيار المطابخ اللي استخدموها أصلية وممتازة وتتحمل الشغل الثقيل</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>زياد سعد:</strong> أفضل فني صيانة مطابخ بجدة، أنصح التعامل معهم بشدة</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>Thomas Petit:</strong> تصليح السحابات والمجاري تم باحتراف وتخلصت من الصوت المزعج للأدراج</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>أم محمد:</strong> شغل مرتب ونظيف وتركيب المفصلات الهيدروليك رجع الأبواب تقفل برواق وسلاسة</div>
-        <div class="ticker-item"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="صورة"><strong>Charles Dubois:</strong> خدمة احترافية وأمانة تامة وأسعار واضحة قبل البدء في الشغل</div>
+
+    <div class="card">
+      <h2>آراء عملائنا في جدة</h2>
+      <div class="reviews-hint">
+        <span>تقييمات حقيقية من عملاء تم خدمتهم</span>
+        <span>اسحب يميناً ويساراً ⇄</span>
+      </div>
+      
+      <div class="reviews-slider">
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="أم معاذ">
+            <div class="review-author">
+              <strong>أم معاذ</strong>
+              <span class="review-stars">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-text">سرعة في الإنجاز وعمل احترافي منظم بجدة، ركبوا لي مفصلات هيدروليك للأبواب ورجعت تقفل بنعومة تامة.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&auto=format&fit=crop&q=80" alt="سعيد عبد الله">
+            <div class="review-author">
+              <strong>سعيد عبد الله</strong>
+              <span class="review-stars">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-text">غيروا لي سحابات الأدراج وبقت ناعمة وسلسة وسريعة في الفتح والإغلاق بعد ما كانت تخرج من مكانها.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100&auto=format&fit=crop&q=80" alt="طارق عمر">
+            <div class="review-author">
+              <strong>طارق عمر</strong>
+              <span class="review-stars">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-text">رمموا الفورميكا التالفة أسفل الأحواض بطريقة احترافية ومقاومة للمياه، شغل نظيف جداً وسعر ممتاز.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="ماجد فهد">
+            <div class="review-author">
+              <strong>ماجد فهد</strong>
+              <span class="review-stars">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-text">صراحة ناس أمينة ومصداقية عالية في المواعيد والشغل، قصوا لي مكان لغسالة الصحون بدقة متناهية.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&auto=format&fit=crop&q=80" alt="زياد سعد">
+            <div class="review-author">
+              <strong>زياد سعد</strong>
+              <span class="review-stars">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-text">أفضل فني صيانة مطابخ بجدة، القطع اللي استخدموها أصلية وتتحمل الشغل الثقيل أنصح التعامل معهم بشدة.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="أم محمد">
+            <div class="review-author">
+              <strong>أم محمد</strong>
+              <span class="review-stars">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-text">شغل مرتب ونظيف وتركيب المفصلات الهيدروليك رجع أبواب المطبخ كأنها جديدة تماماً بدون أي صوت.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80" alt="Ahmed Mohamed">
+            <div class="review-author">
+              <strong>Ahmed Mohamed</strong>
+              <span class="review-stars">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-text">تم إصلاح أدراج المطبخ وتثبيت الأرفف بدقة وسرعة عالية شكراً لكم على الأمانة والإتقان.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&auto=format&fit=crop&q=80" alt="Michel Bernard">
+            <div class="review-author">
+              <strong>Michel Bernard</strong>
+              <span class="review-stars">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-text">قصوا وعدلوا الدواليب لغسالة الصحون بدقة متناهية وبدون أي تشويه لديكور المطبخ، خدمة ممتازة.</p>
+        </div>
       </div>
     </div>
+
   </div>
 
   <div class="bar">
@@ -285,25 +374,37 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      let visits = localStorage.getItem("jawharat_visits");
-      if (!visits) {
-        visits = 9591;
-      } else {
-        visits = parseInt(visits) + 1;
+    (function() {
+      const now = new Date();
+      const dayOfWeek = now.getDay();
+      const daysUntilThursday = (4 - dayOfWeek + 7) % 7;
+      const nextThursday = new Date(now);
+      nextThursday.setDate(now.getDate() + daysUntilThursday);
+
+      const year = nextThursday.getFullYear();
+      const month = nextThursday.getMonth() + 1;
+      const day = nextThursday.getDate();
+
+      const offerDateEl = document.getElementById("weeklyOfferDate");
+      if (offerDateEl) {
+        offerDateEl.textContent = "العرض ساري حتى يوم الخميس الموافق " + year + "/" + month + "/" + day;
       }
-      localStorage.setItem("jawharat_visits", visits);
-      document.getElementById("visitorCount").innerText = visits;
-    });
 
-    let currentIndex = 0;
-    const tickerContainer = document.getElementById('tickerContainer');
-    const totalItems = tickerContainer.children.length;
+      const baseTime = new Date("2026-11-23T21:00:00").getTime();
+      const hoursPassed = Math.max(0, Math.floor((Date.now() - baseTime) / (1000 * 60 * 60)));
+      let personalVisits = parseInt(localStorage.getItem("jawharat_kitchen_live_count") || "0", 10) + 1;
+      localStorage.setItem("jawharat_kitchen_live_count", personalVisits);
 
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % totalItems;
-      tickerContainer.style.transform = `translateY(-${currentIndex * 20}px)`;
-    }, 10000);
+      let currentCount = 5001 + hoursPassed + personalVisits;
+      const countEl = document.getElementById("visitorCount");
+      if (countEl) {
+        countEl.textContent = currentCount;
+        setInterval(function() {
+          currentCount += 1;
+          countEl.textContent = currentCount;
+        }, 45000);
+      }
+    })();
   </script>
 
 </body>
