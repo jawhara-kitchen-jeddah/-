@@ -108,16 +108,19 @@
       gap: 10px;
     }
     .review-avatar {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      color: #fff;
-      font-weight: bold;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
       flex-shrink: 0;
+      border: 2px solid #cbd5e1;
+      background: #e2e8f0;
+    }
+    .review-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .review-author {
       display: flex;
@@ -153,8 +156,8 @@
   <div class="container">
 
     <div class="offer-banner">
-      عرض خاص <span>خصم 34%</span> على جميع أعمال صيانة وتعديل دواليب المطابخ بجدة
-      <span class="offer-date" id="weeklyOfferDate">العرض ساري حتى يوم الخميس القادم</span>
+      عرض خاص <span>خصم 34%</span> على صيانة وتعديل دواليب المطابخ بجدة
+      <span class="offer-date" id="weeklyOfferDate">احجز قبل نهاية يوم الخميس القادم واحتفظ بالخصم حتى لو كان التنفيذ لاحقاً</span>
     </div>
 
     <div class="actions">
@@ -267,10 +270,10 @@
       <span>تمت مشاهدة الصفحة: <strong id="visitorCount">5001</strong> زيارة</span>
     </div>
 
-    <div class="card defer-render">
+    <div class="card defer-render" id="reviewsCard">
       <h2>آراء العملاء بعد تنفيذ الشغل في جدة</h2>
       <div class="reviews-hint">
-        <span>اسحب في أي اتجاه ⇄</span>
+        <span>اسحب يمين أو يسار ⇄</span>
       </div>
       
       <div class="reviews-slider" id="reviewsSlider"></div>
@@ -293,7 +296,8 @@
 
       const offerDateEl = document.getElementById("weeklyOfferDate");
       if (offerDateEl) {
-        offerDateEl.textContent = "العرض ساري حتى يوم الخميس الموافق " + nextThursday.getFullYear() + "/" + (nextThursday.getMonth() + 1) + "/" + nextThursday.getDate();
+        const formattedDate = nextThursday.getFullYear() + "/" + (nextThursday.getMonth() + 1) + "/" + nextThursday.getDate();
+        offerDateEl.innerHTML = 'احجز قبل نهاية يوم الخميس <bdo dir="ltr">' + formattedDate + '</bdo> واحتفظ بالخصم حتى لو كان التنفيذ لاحقاً';
       }
 
       const baseTime = new Date("2026-11-23T21:00:00").getTime();
@@ -311,67 +315,167 @@
         }, 45000);
       }
 
-      const namesList = [
-        "أم معاذ العتيبي", "سعيد عبد الله الغامدي", "طارق عمر الزهراني", "ماجد فهد القحطاني", "زياد سعد الشهري",
-        "أم محمد الحربي", "Ahmed Mohamed", "Michel Bernard", "خالد ناصر المالكي", "فيصل تركي السبيعي",
-        "سلطان بندر الدوسري", "John Smith", "أم سارة الشمري", "عمر ياسر العنزي", "نواف مشعل الجهني",
-        "David Miller", "سلمان إبراهيم البلوي", "يوسف عادل الشمراني", "هاني وليد الأحمدي", "Robert Fox",
-        "أم عبدالله العمري", "سامي محمد السلمي", "فهد صالح الرويلي", "Thomas Petit", "عبدالرحمن حسن المطيري",
-        "بندر طلال الخالدي", "أم فيصل العسيري", "Charles Dubois", "تركي ماجد البقمي", "مشعل سعود الثقفي",
-        "وليد خالد الهذلي", "Pierre Laurent", "ناصر فهد المرزوقي", "إبراهيم علي الصاعدي", "أم خالد الردادي",
-        "Daniel Wilson", "عادل سعد الحارثي", "محمد طارق النفيعي", "ياسر عبدالله الجعيد", "James Taylor",
-        "أم تركي السفياني", "سعود فيصل الوقداني", "أحمد سالم العصيمي", "Kevin Anderson", "طلال بندر المقاطي",
-        "صالح عمر الشلوي", "أم سلطان الجابري", "Mark Thompson", "علي ناصر المزروعي", "حسن إبراهيم البيشي"
+      const reviewsData = [
+        {
+          name: "سعيد الغامدي",
+          photo: "https://randomuser.me/api/portraits/men/1.jpg",
+          text: "سرعة في الإنجاز وعمل احترافي منظم بجدة ركبوا لي مفصلات هيدروليك للأبواب ورجعت تقفل بنعومة تامة"
+        },
+        {
+          name: "طارق الزهراني",
+          photo: "https://randomuser.me/api/portraits/men/3.jpg",
+          text: "استفدت من عرض خصم 34% وحجزت الموعد قبل يوم الخميس وثبتوا لي الخصم رغم أن التنفيذ كان الأسبوع اللي بعده"
+        },
+        {
+          name: "ماجد القحطاني",
+          photo: "https://randomuser.me/api/portraits/men/6.jpg",
+          text: "غيروا لي سحابات الأدراج وبقت ناعمة وسلسة في الفتح والإغلاق بعد ما كانت تخرج من مكانها وتعلق"
+        },
+        {
+          name: "زياد الشهري",
+          photo: "https://randomuser.me/api/portraits/men/8.jpg",
+          text: "رمموا الفورميكا التالفة أسفل الحوض بطريقة احترافية ومقاومة للمياه شغل نظيف جداً وسعر ممتاز"
+        },
+        {
+          name: "خالد المالكي",
+          photo: "https://randomuser.me/api/portraits/men/10.jpg",
+          text: "صراحة ناس أمينة ومصداقية عالية في المواعيد والشغل قصوا لي مكان لغسالة الصحون بدقة متناهية بدون تشويه"
+        },
+        {
+          name: "فيصل السبيعي",
+          photo: "https://randomuser.me/api/portraits/men/13.jpg",
+          text: "لحقت عرض خصم 34% وفرق معي السعر كثير مقارنة بباقي الورش بجدة والشغل طلع فوق الممتاز"
+        },
+        {
+          name: "سلطان الدوسري",
+          photo: "https://randomuser.me/api/portraits/men/15.jpg",
+          text: "أفضل فني صيانة مطابخ في جدة القطع اللي استخدموها أصلية وتتحمل الشغل الثقيل أنصح بالتعامل معهم بشدة"
+        },
+        {
+          name: "عمر العنزي",
+          photo: "https://randomuser.me/api/portraits/men/17.jpg",
+          text: "شغل مرتب ونظيف وتركيب المفصلات الهيدروليك رجع أبواب المطبخ كأنها جديدة تماماً بدون أي صوت"
+        },
+        {
+          name: "نواف الجهني",
+          photo: "https://randomuser.me/api/portraits/men/20.jpg",
+          text: "تم إصلاح أدراج المطبخ وتثبيت الأرفف الهابطة بدقة وسرعة عالية شكراً لكم على الأمانة والإتقان"
+        },
+        {
+          name: "سلمان البلوي",
+          photo: "https://randomuser.me/api/portraits/men/22.jpg",
+          text: "حجزت عبر الواتساب قبل نهاية العرض واحتفظوا لي بخصم 34% وجوني في اليوم اللي حددته بالضبط"
+        },
+        {
+          name: "يوسف الشمراني",
+          photo: "https://randomuser.me/api/portraits/men/26.jpg",
+          text: "تعامل راقي جداً والفني فاهم شغله صح وزن لي جميع أبواب المطبخ العلوي والسفلي بالملي"
+        },
+        {
+          name: "هاني الأحمدي",
+          photo: "https://randomuser.me/api/portraits/men/29.jpg",
+          text: "كان عندي دولاب تخزين هابط ومكسور ثبتوه وغيروا المفصلات والقاعدة ورجع أقوى من الأول بكثير"
+        },
+        {
+          name: "سامي السلمي",
+          photo: "https://randomuser.me/api/portraits/men/32.jpg",
+          text: "غيروا لي مسكات المطبخ والسحابات بالكامل في نفس اليوم وبدون أي فوضى في البيت الله يعطيهم العافية"
+        },
+        {
+          name: "فهد الرويلي",
+          photo: "https://randomuser.me/api/portraits/men/35.jpg",
+          text: "عرض الخصم 34% حقيقي وموفر جداً غيرت عندهم كل مفصلات المطبخ وسحابات الأدراج بسعر ممتاز"
+        },
+        {
+          name: "عبدالرحمن المطيري",
+          photo: "https://randomuser.me/api/portraits/men/38.jpg",
+          text: "عالجوا مشكلة الرطوبة وتآكل الخشب تحت المجلى وغيروا القاعدة بالكامل بألواح قوية ومقاومة للماء"
+        },
+        {
+          name: "بندر العسيري",
+          photo: "https://randomuser.me/api/portraits/men/40.jpg",
+          text: "دقة في المواعيد وإتقان في العمل ركبوا لي مساعدات رفع هيدروليك للأبواب العلوية صارت تفتح بسهولة"
+        },
+        {
+          name: "تركي البقمي",
+          photo: "https://randomuser.me/api/portraits/men/44.jpg",
+          text: "ما شاء الله تبارك الله شغل يبيض الوجه أنصح أي شخص في جدة يحتاج صيانة مطبخ يتواصل معهم فوراً"
+        },
+        {
+          name: "مشعل الثقفي",
+          photo: "https://randomuser.me/api/portraits/men/46.jpg",
+          text: "تواصلت معهم وحجزت العرض قبل الخميس وجاء الفني بعد ثلاث أيام وطبق لي خصم 34% بكل مصداقية"
+        },
+        {
+          name: "وليد الهذلي",
+          photo: "https://randomuser.me/api/portraits/men/49.jpg",
+          text: "عدلوا لي دولاب الميكرويف وفتحوا له مقاس مضبوط تماماً بدون أي كسر أو خدش في الألمنيوم"
+        },
+        {
+          name: "ناصر المرزوقي",
+          photo: "https://randomuser.me/api/portraits/men/53.jpg",
+          text: "ركبوا لي سلال سحب داخلية جديدة للمطبخ مع سحابات رولمان بلي أصلية حركة ناعمة وجودة عالية"
+        },
+        {
+          name: "إبراهيم الصاعدي",
+          photo: "https://randomuser.me/api/portraits/men/56.jpg",
+          text: "الفني وصلني بسرعة في نفس اليوم ووضح لي السعر بكل شفافية قبل البدء والشغل متقن جداً"
+        },
+        {
+          name: "عادل الحارثي",
+          photo: "https://randomuser.me/api/portraits/men/60.jpg",
+          text: "استفدت من الخصم في صيانة دواليب المطبخ وغرفة النوم شغلهم شامل ومرتب ويوفر عليك تكلفة التغيير"
+        },
+        {
+          name: "ياسر الجعيد",
+          photo: "https://randomuser.me/api/portraits/men/63.jpg",
+          text: "أبواب المطبخ كانت مايلة وما تقفل زين بعد ما وزنوها وغيروا المفصلات صار المطبخ كأنه جديد"
+        },
+        {
+          name: "راشد الوقداني",
+          photo: "https://randomuser.me/api/portraits/men/67.jpg",
+          text: "التزام تام بالاتفاق والخصم المعلن 34% والقطع كلها أصلية ومختومة تعامل محترم يشكرون عليه"
+        },
+        {
+          name: "طلال المقاطي",
+          photo: "https://randomuser.me/api/portraits/men/70.jpg",
+          text: "رمموا لي أرفف المطبخ بالكامل وركبوا زوايا تدعيم مخفية صار الدولاب يشيل أوزان ثقيلة بكل أمان"
+        }
       ];
 
-      const commentsPool = [
-        "سرعة في الإنجاز وعمل احترافي منظم بجدة، ركبوا لي مفصلات هيدروليك للأبواب ورجعت تقفل بنعومة تامة.",
-        "غيروا لي سحابات الأدراج وبقت ناعمة وسلسة وسريعة في الفتح والإغلاق بعد ما كانت تخرج من مكانها.",
-        "رمموا الفورميكا التالفة أسفل الأحواض بطريقة احترافية ومقاومة للمياه، شغل نظيف جداً وسعر ممتاز.",
-        "صراحة ناس أمينة ومصداقية عالية في المواعيد والشغل، قصوا لي مكان لغسالة الصحون بدقة متناهية.",
-        "أفضل فني صيانة مطابخ بجدة، القطع اللي استخدموها أصلية وتتحمل الشغل الثقيل أنصح التعامل معهم بشدة.",
-        "شغل مرتب ونظيف وتركيب المفصلات الهيدروليك رجع أبواب المطبخ كأنها جديدة تماماً بدون أي صوت.",
-        "تم إصلاح أدراج المطبخ وتثبيت الأرفف بدقة وسرعة عالية شكراً لكم على الأمانة والإتقان.",
-        "قصوا وعدلوا الدواليب لغسالة الصحون بدقة متناهية وبدون أي تشويه لديكور المطبخ، خدمة ممتازة.",
-        "تعامل راقي جداً والفني فاهم شغله صح، وزن لي جميع أبواب المطبخ العلوي والسفلي بالملي.",
-        "كان عندي دولاب تخزين هابط ومكسور، ثبتوه وغيروا المفصلات ورجع أقوى من الأول بكثير.",
-        "استفدت من خصم 34% وكان السعر مناسب جداً مقارنة بباقي الورش في جدة والشغل نظيف ومضمون.",
-        "غيروا لي مسكات المطبخ والسحابات بالكامل في نفس اليوم وبدون أي فوضى في البيت، الله يعطيهم العافية.",
-        "عالجوا مشكلة الرطوبة وتآكل الخشب تحت المجلى وغيروا القاعدة بالكامل بشكل ممتاز جداً.",
-        "دقة في المواعيد وإتقان في العمل، ركبوا لي مساعدات رفع هيدروليك للأبواب العلوية صارت تفتح بسهولة.",
-        "ما شاء الله تبارك الله شغل يبيض الوجه، أنصح أي شخص في جدة يحتاج صيانة مطبخ يتواصل معهم فوراً."
-      ];
-
-      const colors = ["#1e3a8a", "#0f766e", "#b91c1c", "#4338ca", "#0369a1", "#15803d", "#b45309", "#6d28d9"];
       const slider = document.getElementById("reviewsSlider");
+      const reviewsCard = document.getElementById("reviewsCard");
+      let reviewsRendered = false;
 
       function renderReviews() {
-        if (!slider) return;
+        if (!slider || reviewsRendered) return;
+        reviewsRendered = true;
         let html = "";
-        for (let i = 0; i < namesList.length; i++) {
-          const name = namesList[i];
-          html += '<div class="review-card"><div class="review-header"><div class="review-avatar" style="background:' + colors[i % colors.length] + '">' + name.charAt(0) + '</div><div class="review-author"><strong>' + name + '</strong><span class="review-stars">★★★★★</span></div></div><p class="review-text">' + commentsPool[i % commentsPool.length] + '</p></div>';
+        for (let i = 0; i < reviewsData.length; i++) {
+          const item = reviewsData[i];
+          html += '<div class="review-card">' +
+            '<div class="review-header">' +
+              '<div class="review-avatar"><img src="' + item.photo + '" alt="' + item.name + '" loading="lazy" decoding="async"></div>' +
+              '<div class="review-author"><strong>' + item.name + '</strong><span class="review-stars">★★★★★</span></div>' +
+            '</div>' +
+            '<p class="review-text">' + item.text + '</p>' +
+          '</div>';
         }
-        slider.innerHTML = html + html + html;
-
-        const cardStep = 292;
-        const oneSetWidth = namesList.length * cardStep;
-        slider.scrollLeft = -oneSetWidth;
-
-        slider.addEventListener("scroll", function() {
-          const pos = Math.abs(slider.scrollLeft);
-          if (pos <= cardStep) {
-            slider.scrollLeft = -(pos + oneSetWidth);
-          } else if (pos >= (oneSetWidth * 2) - cardStep) {
-            slider.scrollLeft = -(pos - oneSetWidth);
-          }
-        }, { passive: true });
+        slider.innerHTML = html;
       }
 
-      if ("requestIdleCallback" in window) {
-        requestIdleCallback(renderReviews);
+      if ("IntersectionObserver" in window && reviewsCard) {
+        const observer = new IntersectionObserver(function(entries, obs) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              renderReviews();
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: "200px 0px" });
+        observer.observe(reviewsCard);
       } else {
-        setTimeout(renderReviews, 1);
+        renderReviews();
       }
     })();
   </script>
