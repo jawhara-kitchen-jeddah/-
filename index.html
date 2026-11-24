@@ -83,6 +83,7 @@
       gap: 12px;
       overflow-x: auto;
       padding-bottom: 6px;
+      direction: ltr;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -93,6 +94,8 @@
     .review-card {
       min-width: 280px;
       max-width: 280px;
+      direction: rtl;
+      text-align: right;
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 10px;
@@ -273,7 +276,7 @@
     <div class="card defer-render" id="reviewsCard">
       <h2>آراء العملاء بعد تنفيذ الشغل في جدة</h2>
       <div class="reviews-hint">
-        <span>اسحب يمين أو يسار ⇄</span>
+        <span>اسحب في أي اتجاه ⇄</span>
       </div>
       
       <div class="reviews-slider" id="reviewsSlider"></div>
@@ -322,6 +325,11 @@
           text: "سرعة في الإنجاز وعمل احترافي منظم بجدة ركبوا لي مفصلات هيدروليك للأبواب ورجعت تقفل بنعومة تامة"
         },
         {
+          name: "أم معاذ العتيبي",
+          photo: "https://randomuser.me/api/portraits/women/12.jpg",
+          text: "تعامل راقي وأمانة عالية عدلوا لي دولاب المطبخ وركبوا مكان غسالة الصحون بشكل مرتب جداً واستفدت من خصم 34%"
+        },
+        {
           name: "طارق الزهراني",
           photo: "https://randomuser.me/api/portraits/men/3.jpg",
           text: "استفدت من عرض خصم 34% وحجزت الموعد قبل يوم الخميس وثبتوا لي الخصم رغم أن التنفيذ كان الأسبوع اللي بعده"
@@ -340,6 +348,11 @@
           name: "خالد المالكي",
           photo: "https://randomuser.me/api/portraits/men/10.jpg",
           text: "صراحة ناس أمينة ومصداقية عالية في المواعيد والشغل قصوا لي مكان لغسالة الصحون بدقة متناهية بدون تشويه"
+        },
+        {
+          name: "نورة الحربي",
+          photo: "https://randomuser.me/api/portraits/women/24.jpg",
+          text: "الأبواب عندي كانت مايلة ومكسورة بعد ما غيروا المفصلات لهيدروليك أصلي رجع المطبخ كأنه جديد وبسعر ممتاز"
         },
         {
           name: "فيصل السبيعي",
@@ -367,6 +380,11 @@
           text: "حجزت عبر الواتساب قبل نهاية العرض واحتفظوا لي بخصم 34% وجوني في اليوم اللي حددته بالضبط"
         },
         {
+          name: "أم سارة الشمري",
+          photo: "https://randomuser.me/api/portraits/women/36.jpg",
+          text: "حجزت معهم قبل يوم الخميس عشان أثبت عرض الخصم 34% وجوني بالوقت المحدد وصلحوا كل الأدراج بسرعة ونظافة"
+        },
+        {
           name: "يوسف الشمراني",
           photo: "https://randomuser.me/api/portraits/men/26.jpg",
           text: "تعامل راقي جداً والفني فاهم شغله صح وزن لي جميع أبواب المطبخ العلوي والسفلي بالملي"
@@ -392,6 +410,11 @@
           text: "عالجوا مشكلة الرطوبة وتآكل الخشب تحت المجلى وغيروا القاعدة بالكامل بألواح قوية ومقاومة للماء"
         },
         {
+          name: "منيرة العمري",
+          photo: "https://randomuser.me/api/portraits/women/48.jpg",
+          text: "عالجوا الرطوبة والتلف تحت المجلى وبدلوا الفورميكا التالفة بشغل نظيف بدون أي فوضى في المطبخ الله يعطيهم العافية"
+        },
+        {
           name: "بندر العسيري",
           photo: "https://randomuser.me/api/portraits/men/40.jpg",
           text: "دقة في المواعيد وإتقان في العمل ركبوا لي مساعدات رفع هيدروليك للأبواب العلوية صارت تفتح بسهولة"
@@ -415,6 +438,11 @@
           name: "ناصر المرزوقي",
           photo: "https://randomuser.me/api/portraits/men/53.jpg",
           text: "ركبوا لي سلال سحب داخلية جديدة للمطبخ مع سحابات رولمان بلي أصلية حركة ناعمة وجودة عالية"
+        },
+        {
+          name: "أم ريم الخالدي",
+          photo: "https://randomuser.me/api/portraits/women/62.jpg",
+          text: "غيروا سحابات الأدراج وركبوا لي سلال داخلية للمطبخ الحركة صارت ناعمة وسلسة جداً أنصح كل ربة بيت بالتعامل معهم"
         },
         {
           name: "إبراهيم الصاعدي",
@@ -461,7 +489,19 @@
             '<p class="review-text">' + item.text + '</p>' +
           '</div>';
         }
-        slider.innerHTML = html;
+        slider.innerHTML = html + html + html;
+
+        const cardStep = 292;
+        const oneSetWidth = slider.scrollWidth / 3;
+        slider.scrollLeft = oneSetWidth;
+
+        slider.addEventListener("scroll", function() {
+          if (slider.scrollLeft <= cardStep) {
+            slider.scrollLeft += oneSetWidth;
+          } else if (slider.scrollLeft >= (oneSetWidth * 2) - cardStep) {
+            slider.scrollLeft -= oneSetWidth;
+          }
+        }, { passive: true });
       }
 
       if ("IntersectionObserver" in window && reviewsCard) {
